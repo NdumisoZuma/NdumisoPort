@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+SHELL ["poweshell","-Command"]
+
+RUN git clone https://github.com/NdumisoZuma/NdumisoZuma.git
+
+COPY NdumisoZuma/public/*.html c:\inetpub\wwwroot
+COPY NdumisoZuma/public/assets/js c:\inetpub\wwwroot\js
+COPY NdumisoZuma/public/assets/img c:\inetpub\wwwroot\img
+
+EXPOSE 80
+
+CMD ["powershell","Start-Service", "w3svc"]
