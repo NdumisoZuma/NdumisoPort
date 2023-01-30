@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 SHELL ["powershell","-Command"]
 
-RUN git clone https://github.com/NdumisoZuma/NdumisoResume.git
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/NdumisoZuma/NdumisoResume02.git
 
 COPY NdumisoZuma/public/*.html c:\inetpub\wwwroot
 COPY NdumisoZuma/public/assets/js c:\inetpub\wwwroot\js
