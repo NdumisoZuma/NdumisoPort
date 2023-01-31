@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 SHELL ["powershell","-Command"]
 
-RUN powershell -Command Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-32-bit.zip -UseBasicParsing -OutFile MinGit.zip; Expand-Archive MinGit.zip -DestinationPath C:\MinGit; Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name 'Path' -Value $env:Path + ';C:\MinGit\cmd'
-RUN git clone https://github.com/NdumisoZuma/NdumisoResume06.git
+RUN powershell -Command Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-32-bit.zip -UseBasicParsing -OutFile MinGit.zip; Expand-Archive MinGit.zip -DestinationPath C:\MinGit; Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name 'Path' -Value "$env:Path;C:\MinGit\cmd"
+RUN git clone https://github.com/NdumisoZuma/NdumisoResume07.git
 
 COPY NdumisoZuma/public/*.html c:\inetpub\wwwroot
 COPY NdumisoZuma/public/assets/js c:\inetpub\wwwroot\js
